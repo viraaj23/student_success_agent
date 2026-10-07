@@ -1,2 +1,24 @@
-# student_success_agent
-College students must simultaneously manage academics, skill development, projects, and internship applications. However, these activities are usually handled separately, making it difficult for students to understand what they should prioritize, which skills they lack, and how to balance their academic responsibilities with career preparation.
+
+# Student Success Agent
+
+An Agentic AI system that helps college students manage academics,
+skill development, projects, and internship preparation.
+
+## Modules
+
+- CampusFlow
+- SkillPath
+- InternshipHunter
+- AI Student Success Agent
+
+## Core Agent Loop
+
+Observe → Reason → Plan → Act → Evaluate → Replan
+
+## Team
+
+- Member 1 - Frontend
+- Member 2 - Backend
+- Member 3 - AI Agent
+- Member 4 - SkillPath
+- Member 5 - InternshipHunter

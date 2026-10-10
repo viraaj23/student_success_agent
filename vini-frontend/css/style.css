@@ -139,3 +139,72 @@ body {
 
 .progress-row { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
 .progress-row .muted { margin: 0; font-size: 13px; white-space: nowrap; }
+/* ---------- InternshipHunter ---------- */
+.filters { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin: 24px 0 12px; }
+.filters input[type="text"], .filters select {
+  background: var(--surface); color: var(--text); border: 1px solid var(--border);
+  padding: 10px 14px; border-radius: 10px; font-family: inherit; font-size: 14px;
+}
+.filters input[type="text"] { flex: 1; min-width: 200px; }
+.filters input:focus, .filters select:focus { outline: none; border-color: var(--primary); }
+.check { color: var(--muted); font-size: 14px; display: flex; align-items: center; gap: 6px; cursor: pointer; }
+
+.intern-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; margin-top: 16px; }
+.intern-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 20px; display: flex; flex-direction: column; gap: 12px;
+}
+.intern-card:hover { border-color: var(--primary); }
+.intern-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+.intern-head h4 { font-size: 16px; }
+.intern-head .company { color: var(--muted); font-size: 13px; margin-top: 2px; }
+.match { font-weight: 700; font-size: 14px; padding: 4px 10px; border-radius: 99px; white-space: nowrap; }
+.match.high { background: rgba(52,211,153,.15); color: var(--success); }
+.match.mid  { background: rgba(251,191,36,.15);  color: var(--warning); }
+.match.low  { background: rgba(248,113,113,.15); color: var(--danger); }
+.meta { color: var(--muted); font-size: 13px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-size: 12px; padding: 3px 10px; border-radius: 99px; background: var(--border); color: var(--muted); }
+.chip.have { background: rgba(52,211,153,.15); color: var(--success); }
+.chip.miss { background: rgba(248,113,113,.15); color: var(--danger); }
+.card-actions { display: flex; gap: 8px; margin-top: auto; }
+.btn.ghost { background: transparent; border: 1px solid var(--border); color: var(--text); }
+.btn.ghost:hover { border-color: var(--primary); }
+.btn.saved { background: rgba(251,191,36,.15); color: var(--warning); border-color: transparent; }
+/* ---------- Weekly Planner ---------- */
+.planner-bar { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 12px; }
+.planner-bar label { color: var(--muted); font-size: 14px; }
+.planner-bar select {
+  background: var(--surface); color: var(--text); border: 1px solid var(--border);
+  padding: 10px 14px; border-radius: 10px; font-family: inherit; font-size: 14px;
+}
+
+.legend { display: flex; gap: 16px; align-items: center; color: var(--muted); font-size: 13px; margin-bottom: 14px; }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 4px; }
+.dot.academic { background: var(--primary); }
+.dot.skill { background: var(--success); }
+.dot.career { background: var(--warning); }
+
+.week { display: grid; grid-template-columns: repeat(7, minmax(130px, 1fr)); gap: 10px; overflow-x: auto; padding-bottom: 6px; }
+.day {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 12px; min-height: 220px; display: flex; flex-direction: column; gap: 8px;
+}
+.day h4 { font-size: 13px; color: var(--muted); display: flex; justify-content: space-between; }
+.day.today { border-color: var(--primary); }
+.day.today h4 { color: var(--primary); }
+.day.past { opacity: .75; }
+
+.ptask {
+  background: var(--bg); border-left: 3px solid var(--primary); border-radius: 8px;
+  padding: 8px 10px; font-size: 13px; cursor: pointer;
+}
+.ptask:hover { background: var(--border); }
+.ptask.academic { border-left-color: var(--primary); }
+.ptask.skill { border-left-color: var(--success); }
+.ptask.career { border-left-color: var(--warning); }
+.ptask.done { text-decoration: line-through; color: var(--muted); }
+.ptask.missed { background: rgba(248,113,113,.12); }
+.ptask small { display: block; margin-top: 3px; font-size: 11px; color: var(--muted); text-decoration: none; }
+.ptask.missed small { color: var(--danger); }
+.ptask.moved small { color: var(--success); }

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weekly Planner | Student Success Agent</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <aside class="sidebar">
+    <h2 class="logo">🎓 Success Agent</h2>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="campusflow.html">CampusFlow</a>
+      <a href="skillpath.html">SkillPath</a>
+      <a href="internships.html">InternshipHunter</a>
+      <a href="planner.html" class="active">Weekly Planner</a>
+      <a href="progress.html">Progress</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <h1>Weekly Planner 🗓️</h1>
+    <p class="muted">Academics, skills and career prep balanced in one week. Click a task to tick it.</p>
+
+    <section class="stats" id="stats"></section>
+
+    <div class="planner-bar">
+      <label for="today">Today is:</label>
+      <select id="today"></select>
+      <button class="btn" id="runBtn">🤖 Run Agent & Re-plan</button>
+      <button class="btn ghost" id="resetBtn">Reset demo</button>
+    </div>
+
+    <div class="legend">
+      <span class="dot academic"></span> Academics
+      <span class="dot skill"></span> Skills
+      <span class="dot career"></span> Career
+    </div>
+
+    <section class="week" id="board"></section>
+
+    <section class="card full block">
+      <h3>🤖 Agent Log</h3>
+      <ul class="list" id="log"></ul>
+    </section>
+  </main>
+
+  <script src="js/planner.js"></script>
+</body>
+</html>

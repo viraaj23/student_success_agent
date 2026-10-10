@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InternshipHunter | Student Success Agent</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <aside class="sidebar">
+    <h2 class="logo">🎓 Success Agent</h2>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="campusflow.html">CampusFlow</a>
+      <a href="skillpath.html">SkillPath</a>
+      <a href="internships.html" class="active">InternshipHunter</a>
+      <a href="planner.html">Weekly Planner</a>
+      <a href="progress.html">Progress</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <h1>InternshipHunter 🔎</h1>
+    <p class="muted">Internships matched to your skills by the agent.</p>
+
+    <div class="filters">
+      <input type="text" id="search" placeholder="Search role or company...">
+      <select id="mode">
+        <option value="All">All types</option>
+        <option value="Remote">Remote</option>
+        <option value="On-site">On-site</option>
+      </select>
+      <select id="minMatch">
+        <option value="0">Any match</option>
+        <option value="50">50%+ match</option>
+        <option value="75">75%+ match</option>
+      </select>
+      <label class="check"><input type="checkbox" id="savedOnly"> Saved only</label>
+    </div>
+
+    <p class="muted" id="count"></p>
+    <section class="intern-grid" id="internships"></section>
+  </main>
+
+  <script src="js/internships.js"></script>
+</body>
+</html>

@@ -208,3 +208,14 @@ body {
 .ptask small { display: block; margin-top: 3px; font-size: 11px; color: var(--muted); text-decoration: none; }
 .ptask.missed small { color: var(--danger); }
 .ptask.moved small { color: var(--success); }
+/* ---------- Progress ---------- */
+.dot.missed { background: var(--danger); }
+.small { font-size: 12px; margin: -6px 0 14px; }
+
+.chart { display: flex; align-items: flex-end; gap: 12px; height: 200px; padding-top: 10px; }
+.chart .col { flex: 1; display: flex; flex-direction: column; align-items: center; height: 100%; }
+.chart .stack { flex: 1; width: 100%; display: flex; flex-direction: column; justify-content: flex-end; gap: 2px; }
+.chart .seg { width: 100%; border-radius: 6px; transition: height .4s; }
+.chart .seg.done { background: var(--success); }
+.chart .seg.missed { background: var(--danger); }
+.chart .col span { margin-top: 8px; font-size: 12px; color: var(--muted); }

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Progress | Student Success Agent</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <aside class="sidebar">
+    <h2 class="logo">🎓 Success Agent</h2>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="campusflow.html">CampusFlow</a>
+      <a href="skillpath.html">SkillPath</a>
+      <a href="internships.html">InternshipHunter</a>
+      <a href="planner.html">Weekly Planner</a>
+      <a href="progress.html" class="active">Progress</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <h1>Progress 📈</h1>
+    <p class="muted">How your week, skills and applications are going.</p>
+
+    <section class="stats" id="stats"></section>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Tasks This Week</h3>
+        <div class="legend">
+          <span><span class="dot skill"></span> Done</span>
+          <span><span class="dot missed"></span> Missed</span>
+        </div>
+        <div class="chart" id="chart"></div>
+      </div>
+
+      <div class="card">
+        <h3>Skill Growth</h3>
+        <p class="muted small">Yellow line = where you were last month</p>
+        <div id="skills"></div>
+      </div>
+
+      <div class="card">
+        <h3>Internship Pipeline</h3>
+        <ul class="list" id="funnel"></ul>
+      </div>
+
+      <div class="card">
+        <h3>🤖 Agent Insights</h3>
+        <ul class="list" id="insights"></ul>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/progress.js"></script>
+</body>
+</html>/* ---------- Progress ---------- */
+.dot.missed { background: var(--danger); }
+.small { font-size: 12px; margin: -6px 0 14px; }
+
+.chart { display: flex; align-items: flex-end; gap: 12px; height: 200px; padding-top: 10px; }
+.chart .col { flex: 1; display: flex; flex-direction: column; align-items: center; height: 100%; }
+.chart .stack { flex: 1; width: 100%; display: flex; flex-direction: column; justify-content: flex-end; gap: 2px; }
+.chart .seg { width: 100%; border-radius: 6px; transition: height .4s; }
+.chart .seg.done { background: var(--success); }
+.chart .seg.missed { background: var(--danger); }
+.chart .col span { margin-top: 8px; font-size: 12px; color: var(--muted); }

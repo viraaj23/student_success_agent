@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusFlow | Student Success Agent</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <aside class="sidebar">
+    <h2 class="logo">🎓 Success Agent</h2>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="campusflow.html" class="active">CampusFlow</a>
+      <a href="skillpath.html">SkillPath</a>
+      <a href="internships.html">InternshipHunter</a>
+      <a href="planner.html">Weekly Planner</a>
+      <a href="progress.html">Progress</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <h1>CampusFlow 📅</h1>
+    <p class="muted">Your classes, assignments and exams in one place.</p>
+
+    <section class="card full block">
+      <h3>Weekly Timetable</h3>
+      <div class="table-wrap">
+        <table class="timetable" id="timetable"></table>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Assignments & Deadlines</h3>
+        <div class="add-form">
+          <input type="text" id="taskName" placeholder="Assignment name">
+          <input type="date" id="taskDate">
+          <button class="btn" id="addBtn">Add</button>
+        </div>
+        <ul class="list" id="assignments"></ul>
+      </div>
+
+      <div class="card">
+        <h3>Upcoming Exams</h3>
+        <ul class="list" id="exams"></ul>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/campusflow.js"></script>
+</body>
+</html>

@@ -1,13 +1,49 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vini Frontend</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Success Agent</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>My Frontend Project</h1>
-    <p>Welcome to my project!</p>
+
+  <aside class="sidebar">
+    <h2 class="logo">🎓 Success Agent</h2>
+    <nav>
+      <a href="index.html" class="active">Dashboard</a>
+      <a href="campusflow.html">CampusFlow</a>
+      <a href="skillpath.html">SkillPath</a>
+      <a href="internships.html">InternshipHunter</a>
+      <a href="planner.html">Weekly Planner</a>
+      <a href="progress.html">Progress</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <h1>Welcome back 👋</h1>
+    <p class="muted">Here's your week at a glance.</p>
+
+    <section class="stats" id="stats"></section>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Today's Tasks</h3>
+        <ul class="list" id="tasks"></ul>
+      </div>
+
+      <div class="card">
+        <h3>Upcoming Deadlines</h3>
+        <ul class="list" id="deadlines"></ul>
+      </div>
+
+      <div class="card full">
+        <h3>🤖 Agent Activity</h3>
+        <ul class="list" id="agent"></ul>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/script.js"></script>
 </body>
 </html>

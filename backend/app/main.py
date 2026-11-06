@@ -26,14 +26,19 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# -------------------- CORS MIDDLEWARE --------------------
+
+# ---------------- CORS MIDDLEWARE ----------------
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Adjust with specific origins if needed in production
+    allow_origins=[
+        "https://student-success-agent-umber.vercel.app"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 
 # -------------------- PYDANTIC MODELS --------------------

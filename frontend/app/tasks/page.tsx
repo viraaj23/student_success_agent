@@ -67,6 +67,8 @@ export default function TasksPage() {
   const byDeadline = (a: Task, b: Task) => a.deadline.localeCompare(b.deadline);
 
   const shown = tasks.filter((t) => filter === "all" || statusOf(t) === filter).sort(byDeadline);
+  const activeShown = shown.filter((task) => statusOf(task) !== "completed");
+  const completedShown = shown.filter((task) => statusOf(task) === "completed");
   const percent = tasks.length ? Math.round((count("completed") / tasks.length) * 100) : 0;
   const hoursLeft = tasks
     .filter((t) => statusOf(t) !== "completed")
@@ -118,6 +120,48 @@ export default function TasksPage() {
 
   const input =
     "rounded-xl border border-white/10 bg-black/30 px-3 py-2.5 text-sm text-white outline-none transition placeholder:text-white/35 focus:border-violet-400/70 focus:ring-2 focus:ring-violet-400/20";
+
+  const renderTask = (t: Task) => {
+    const s = statusOf(t);
+    return (
+      <motion.li
+        key={t.id}
+        layout
+        initial={{ opacity: 0, y: 12, scale: 0.98 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.96 }}
+        transition={{ duration: 0.25 }}
+      >
+        <GlowCard className={s === "overdue" ? "!border-rose-400/30" : ""}>
+          <div className="flex items-center gap-4 p-4">
+            <motion.button
+              whileTap={{ scale: 0.8 }}
+              onClick={() => toggle(t.id)}
+              aria-label="Mark done or not done"
+              className={`grid h-7 w-7 shrink-0 place-items-center rounded-full border text-sm transition ${
+                s === "completed"
+                  ? "border-transparent bg-linear-to-br from-emerald-400 to-cyan-400 text-black"
+                  : "border-white/25 text-transparent hover:border-white/60"
+              }`}
+            >
+              <i className="bi bi-check-lg" />
+            </motion.button>
+
+            <div className="min-w-0 flex-1">
+              <div className={`truncate font-medium ${s === "completed" ? "text-white/40 line-through" : ""}`}>{t.task_title}</div>
+              <div className="mt-0.5 text-sm text-white/45">
+                {t.course_name} · {t.deadline.slice(0, 10)} · {t.estimated_hours}h
+              </div>
+            </div>
+
+            <span className={`whitespace-nowrap rounded-full px-3 py-1 text-xs font-medium ${pill[s]}`}>
+              {s === "completed" ? "Completed" : dueLabel(t, now)}
+            </span>
+          </div>
+        </GlowCard>
+      </motion.li>
+    );
+  };
 
   const stats = [
     { label: "Total", value: tasks.length, icon: "bi-collection", color: "text-white/50" },
@@ -232,50 +276,23 @@ export default function TasksPage() {
       {/* Task list */}
       <ul className="mt-4 flex flex-col gap-3">
         <AnimatePresence initial={false}>
-          {shown.map((t) => {
-            const s = statusOf(t);
-            return (
-              <motion.li
-                key={t.id}
-                layout
-                initial={{ opacity: 0, y: 12, scale: 0.98 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.96 }}
-                transition={{ duration: 0.25 }}
-              >
-                <GlowCard className={s === "overdue" ? "!border-rose-400/30" : ""}>
-                  <div className="flex items-center gap-4 p-4">
-                    <motion.button
-                      whileTap={{ scale: 0.8 }}
-                      onClick={() => toggle(t.id)}
-                      aria-label="Mark done or not done"
-                      className={`grid h-7 w-7 shrink-0 place-items-center rounded-full border text-sm transition ${
-                        s === "completed"
-                          ? "border-transparent bg-linear-to-br from-emerald-400 to-cyan-400 text-black"
-                          : "border-white/25 text-transparent hover:border-white/60"
-                      }`}
-                    >
-                      <i className="bi bi-check-lg" />
-                    </motion.button>
-
-                    <div className="min-w-0 flex-1">
-                      <div className={`truncate font-medium ${s === "completed" ? "text-white/40 line-through" : ""}`}>{t.task_title}</div>
-                      <div className="mt-0.5 text-sm text-white/45">
-                        {t.course_name} · {t.deadline.slice(0, 10)} · {t.estimated_hours}h
-                      </div>
-                    </div>
-
-                    <span className={`whitespace-nowrap rounded-full px-3 py-1 text-xs font-medium ${pill[s]}`}>
-                      {s === "completed" ? "Completed" : dueLabel(t, now)}
-                    </span>
-                  </div>
-                </GlowCard>
-              </motion.li>
-            );
-          })}
+          {activeShown.map(renderTask)}
         </AnimatePresence>
-        {shown.length === 0 && <p className="py-10 text-center text-white/40">Nothing here yet.</p>}
+        {activeShown.length === 0 && completedShown.length === 0 && <p className="py-10 text-center text-white/40">Nothing here yet.</p>}
       </ul>
+
+      {completedShown.length > 0 && (
+        <details className="mt-5 rounded-2xl border border-white/10 bg-white/[0.025] p-4">
+          <summary className="cursor-pointer list-none text-sm font-medium text-white/65 marker:hidden">
+            <i className="bi bi-check2-all mr-2 text-emerald-300" />
+            Completed tasks <span className="ml-1 text-white/40">({completedShown.length})</span>
+            <span className="ml-2 text-xs font-normal text-white/35">Click to expand</span>
+          </summary>
+          <ul className="mt-3 flex flex-col gap-3">
+            {completedShown.map(renderTask)}
+          </ul>
+        </details>
+      )}
     </main>
   );
 }
